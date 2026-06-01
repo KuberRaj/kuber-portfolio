@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="relative inline-block group">
             {/* Button Glow Effect */}
             <div className="absolute inset-0 bg-blue-500/30 blur-3xl rounded-full group-hover:bg-blue-400/50 transition-colors duration-500" />
-            <button onClick={() => scrollToSection("contact")} className="relative px-12 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-all active:scale-95 flex items-center gap-3">
+            <button onClick={() => scrollToSection("contact")} className="relative cursor-pointer px-12 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-all active:scale-95 flex items-center gap-3">
               Start a Conversation <ArrowRightIcon weight="bold" />
             </button>
           </div>
