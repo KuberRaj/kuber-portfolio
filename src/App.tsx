@@ -165,7 +165,7 @@ const IntroCard = ({ onShowResume }: { onShowResume: () => void }) => {
     >
       <div className="scale-[0.65] sm:scale-[0.8] md:scale-100 origin-center">
         {/* The Optimized Glass Card (Smaller Container) */}
-        <div className="group relative w-full max-w-3xl cursor-pointer">
+        <div className="group relative w-full max-w-3xl">
           {/* Animated Border Glow Effect */}
           <div
             className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent rounded-[32px] blur-sm group-hover:via-blue-400/60 transition-all duration-500 animate-[pan_5s_linear_infinite]"
@@ -174,7 +174,7 @@ const IntroCard = ({ onShowResume }: { onShowResume: () => void }) => {
 
           <button
             onClick={() => setShowBottomBar((prev) => !prev)}
-            className="absolute top-4 right-4 z-20 flex items-center justify-center text-blue-400 hover:scale-110 hover:text-blue-300 transition-all duration-300"
+            className="absolute cursor-pointer top-4 right-4 z-20 flex items-center justify-center text-blue-400 hover:scale-110 hover:text-blue-300 transition-all duration-300"
           >
             <FaMailBulk size={24} />
           </button>
@@ -210,14 +210,14 @@ const IntroCard = ({ onShowResume }: { onShowResume: () => void }) => {
                 <div className="flex flex-row justify-between gap-3 w-full max-w-md mx-auto md:mx-0">
                   <button
                     onClick={() => navigate("/kuber")}
-                    className="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2"
+                    className="px-8 py-3 cursor-pointer bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2"
                   >
                     <LuScanSearch size={20} />
                     Explore Portfolio
                   </button>
                   <div
                     onClick={onShowResume}
-                    className="px-8 py-3 border border-white/10 text-white rounded-full font-medium backdrop-blur-md flex items-center gap-2"
+                    className="px-8 py-3 cursor-pointer border border-white/10 text-white rounded-full font-medium backdrop-blur-md flex items-center gap-2"
                   >
                     <FiDownload size={20} />
                     Resume
