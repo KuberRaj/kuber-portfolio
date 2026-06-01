@@ -192,7 +192,7 @@ export default function TechStack() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
+              className={`px-6 py-2 cursor-pointer rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
                 filter === cat
                   ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)]"
                   : "text-slate-400 hover:text-white hover:bg-white/5"
