@@ -130,7 +130,7 @@ export default function Navbar({ onShowResume }: { onShowResume: () => void }) {
         {/* Contact CTA */}
         <Button
           onClick={onShowResume}
-          className="rounded-full bg-white text-black hover:bg-cyan-50 h-10 px-6 font-bold"
+          className="rounded-full cursor-pointer bg-white text-black hover:bg-cyan-50 h-10 px-6 font-bold"
         >
           Résumé
           <ArrowDownToLine />
