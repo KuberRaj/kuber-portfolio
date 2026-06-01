@@ -59,7 +59,7 @@ const items: SocialItem[] = [
     color: "#25D366",
     hoverShadow: "hover:shadow-[0px_10px_10px_#25D366]",
     label: "WhatsApp",
-    href: "https://wa.me/91637149030?text=Hi%20Kunal%2C%20I%20came%20across%20your%20portfolio",
+    href: "https://wa.me/916371649030?text=Hi%20Kunal%2C%20I%20came%20across%20your%20portfolio",
   },
 ];
 
