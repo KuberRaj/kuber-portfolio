@@ -5,10 +5,9 @@ import {
   PaperPlaneTiltIcon,
   CheckCircleIcon,
   WarningIcon,
-  EnvelopeIcon,
-  LinkedinLogoIcon,
-  GithubLogoIcon,
 } from "@phosphor-icons/react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
@@ -70,18 +69,27 @@ export default function Contact() {
             </p>
           </motion.div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-8 p-8">
             <SocialBtn
-              icon={<EnvelopeIcon size={24} />}
+              icon={<SiGmail className="w-6 h-6" />}
               href="mailto:krk2000raj@gmail.com"
+              label="Gmail"
+              colorClass="text-red-500 border-red-500 shadow-red-500/50"
+              hoverShadow="hover:shadow-[0_0_30px_rgba(239,68,68,1),0_0_40px_rgba(239,68,68,0.7)]"
             />
             <SocialBtn
-              icon={<LinkedinLogoIcon size={24} />}
+              icon={<FaLinkedin className="w-6 h-6" />}
               href="https://linkedin.com/in/kuber-raj-kunal"
+              label="LinkedIn"
+              colorClass="text-blue-500 border-blue-500 shadow-blue-500/50"
+              hoverShadow="hover:shadow-[0_0_30px_rgba(59,130,246,1),0_0_40px_rgba(59,130,246,0.7)]"
             />
             <SocialBtn
-              icon={<GithubLogoIcon size={24} />}
+              icon={<FaGithub className="w-6 h-6 text-white" />}
               href="https://github.com/KuberRaj"
+              label="GitHub"
+              colorClass="text-purple-500 border-purple-500 shadow-purple-500/50"
+              hoverShadow="hover:shadow-[0_0_30px_rgba(168,85,247,1),0_0_40px_rgba(168,85,247,0.7)]"
             />
           </div>
         </div>
@@ -137,7 +145,7 @@ export default function Contact() {
 
             <button
               disabled={status === "sending"}
-              className={`w-full h-16 cursor-pointer rounded-full font-bold flex items-center justify-center gap-3 transition-all active:scale-95 disabled:opacity-50 
+              className={`w-full h-16 rounded-full cursor-pointer font-bold flex items-center justify-center gap-3 transition-all active:scale-95 disabled:opacity-50 
                 ${status === "success" ? "bg-emerald-500 text-white" : "bg-blue-600 text-white hover:bg-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.3)]"}`}
             >
               {status === "idle" && (
@@ -164,15 +172,62 @@ export default function Contact() {
   );
 }
 
-function SocialBtn({ icon, href }: { icon: React.ReactNode; href: string }) {
+interface SocialBtnProps {
+  icon: React.ReactNode;
+  href: string;
+  label: string;
+  colorClass: string; // Tailors border and text colors per brand
+  hoverShadow: string; // Tailors the glowing shadow color per brand
+}
+
+function SocialBtn({
+  icon,
+  href,
+  label,
+  colorClass,
+  hoverShadow,
+}: SocialBtnProps) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-blue-400 hover:border-blue-400/50 hover:bg-blue-400/5 transition-all duration-300"
-    >
-      {icon}
-    </a>
+    <div className="relative group cursor-pointer text-[17px] rounded-xl pb-8">
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="block relative no-underline text-white"
+      >
+        {/* Layer Container */}
+        <div
+          className={`relative w-[55px] h-[55px] border-3 border-solid rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.7)] group-hover:-rotate-[35deg] group-hover:skew-x-[20deg] flex items-center justify-center ${colorClass} ${hoverShadow}`}
+        >
+          {/* 3D Background Spans */}
+          <span
+            className={`absolute inset-0 border border-solid rounded-full transition-all duration-300 opacity-0 group-hover:opacity-20 ${colorClass}`}
+          />
+          <span
+            className={`absolute inset-0 border border-solid rounded-full transition-all duration-300 opacity-0 group-hover:opacity-40 group-hover:translate-x-[5px] group-hover:-translate-y-[5px] ${colorClass}`}
+          />
+          <span
+            className={`absolute inset-0 border border-solid rounded-full transition-all duration-300 opacity-0 group-hover:opacity-60 group-hover:translate-x-[10px] group-hover:-translate-y-[10px] ${colorClass}`}
+          />
+          <span
+            className={`absolute inset-0 border border-solid rounded-full transition-all duration-300 opacity-0 group-hover:opacity-80 group-hover:translate-x-[15px] group-hover:-translate-y-[15px] ${colorClass}`}
+          />
+
+          {/* Top Layer Icon Container */}
+          <span
+            className={`absolute inset-0 border border-solid rounded-full transition-all duration-300 flex items-center justify-center bg-zinc-900 group-hover:translate-x-[20px] group-hover:-translate-y-[20px] ${colorClass}`}
+          >
+            {icon}
+          </span>
+        </div>
+
+        {/* Sliding Down Label Text */}
+        <div
+          className={`absolute left-1/2 -bottom-1 opacity-0 font-medium -translate-x-1/2 transition-all duration-300 ease-in-out group-hover:-bottom-7 group-hover:opacity-100 whitespace-nowrap ${colorClass}`}
+        >
+          {label}
+        </div>
+      </a>
+    </div>
   );
 }
