@@ -137,7 +137,7 @@ export default function Contact() {
 
             <button
               disabled={status === "sending"}
-              className={`w-full h-16 rounded-full font-bold flex items-center justify-center gap-3 transition-all active:scale-95 disabled:opacity-50 
+              className={`w-full h-16 cursor-pointer rounded-full font-bold flex items-center justify-center gap-3 transition-all active:scale-95 disabled:opacity-50 
                 ${status === "success" ? "bg-emerald-500 text-white" : "bg-blue-600 text-white hover:bg-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.3)]"}`}
             >
               {status === "idle" && (
