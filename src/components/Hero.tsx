@@ -61,7 +61,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center justify-center gap-6 pt-4">
             <Button
               size="lg"
-              className="rounded-full h-14 px-10 text-lg bg-white text-black hover:bg-white/90 shadow-xl transition-all hover:scale-105 active:scale-95"
+              className="rounded-full h-14 px-10 text-lg cursor-pointer bg-white text-black hover:bg-white/90 shadow-xl transition-all hover:scale-105 active:scale-95"
               onClick={() => scrollToSection("contact")}
             >
               Get in Touch <FaArrowRight className="ml-2 text-blue-800" />
