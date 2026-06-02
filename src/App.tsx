@@ -174,7 +174,7 @@ const IntroCard = ({ onShowResume }: { onShowResume: () => void }) => {
 
           <button
             onClick={() => setShowBottomBar((prev) => !prev)}
-            className="absolute cursor-pointer top-4 right-4 z-20 flex items-center justify-center text-blue-400 hover:scale-110 hover:text-blue-300 transition-all duration-300"
+            className="absolute top-4 right-4 z-20 flex items-center cursor-pointer justify-center text-blue-400 hover:scale-110 hover:text-blue-300 transition-all duration-300"
           >
             <FaMailBulk size={24} />
           </button>
@@ -207,20 +207,40 @@ const IntroCard = ({ onShowResume }: { onShowResume: () => void }) => {
                   with modern tech stacks.
                 </p>
 
-                <div className="flex flex-row justify-between gap-3 w-full max-w-md mx-auto md:mx-0">
+                <div className="flex flex-row justify-between gap-4 w-full max-w-md mx-auto md:mx-0">
+                  {/* Explore Portfolio Button */}
                   <button
                     onClick={() => navigate("/kuber")}
-                    className="px-8 py-3 cursor-pointer bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2"
+                    className="group relative px-8 py-3 bg-blue-600 hover:bg-blue-500 active:scale-95 cursor-pointer text-white rounded-full font-medium transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] flex items-center gap-2 overflow-hidden"
                   >
-                    <LuScanSearch size={20} />
-                    Explore Portfolio
+                    {/* Ambient Background Glow Effect */}
+                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md -z-10" />
+
+                    {/* Moving Light Streak / Flash */}
+                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] transition-transform" />
+
+                    <LuScanSearch
+                      size={24}
+                      className="group-hover:rotate-12 transition-transform duration-300"
+                    />
+                    <span>Explore Portfolio</span>
                   </button>
+
+                  {/* Resume Button */}
                   <div
                     onClick={onShowResume}
-                    className="px-8 py-3 cursor-pointer border border-white/10 text-white rounded-full font-medium backdrop-blur-md flex items-center gap-2"
+                    className="group relative px-8 py-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-blue-500/50 active:scale-95 cursor-pointer text-white rounded-full font-medium backdrop-blur-md flex items-center gap-2 transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(59,130,246,0.2)]"
                   >
-                    <FiDownload size={20} />
-                    Resume
+                    {/* Radial Hover Gradient following the boundary */}
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <FiDownload
+                      size={20}
+                      className="group-hover:-translate-y-0.5 group-hover:text-blue-400 transition-all duration-300"
+                    />
+                    <span className="group-hover:text-blue-200 transition-colors duration-300">
+                      Resume
+                    </span>
                   </div>
                 </div>
               </div>
