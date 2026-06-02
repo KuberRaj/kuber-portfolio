@@ -1,11 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SiHomeadvisor } from "react-icons/si";
 import { GoProjectSymlink } from "react-icons/go";
 import { FaUserGraduate } from "react-icons/fa6";
 import { GiStack } from "react-icons/gi";
-import { ArrowDownToLine } from "lucide-react";
+import { ArrowDownToLine, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 
 const navLinks = [
   {
@@ -36,14 +37,38 @@ const navLinks = [
 
 export default function Navbar({ onShowResume }: { onShowResume: () => void }) {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close menu on outside click
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl"
+      ref={menuRef}
     >
-      <div className="flex items-center justify-between px-6 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl">
+      <div className="flex items-center justify-between px-6 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl relative">
+        {/* Mobile Hamburger (Left Side) */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-cyan-400 p-2 rounded-full bg-white/5 border border-white/10 transition-all active:scale-95 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
         {/* Logo/Name */}
         <div
           onClick={() => navigate("/")}
@@ -146,6 +171,57 @@ export default function Navbar({ onShowResume }: { onShowResume: () => void }) {
           </div>
         </Button>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -10, scale: 0.97, filter: "blur(4px)" }}
+            transition={{ type: "spring", stiffness: 220, damping: 22 }}
+            className="absolute top-20 left-4 right-4 md:hidden grid grid-cols-2 gap-3 p-3 rounded-[32px] bg-slate-950/80 backdrop-blur-3xl border border-white/[0.06] shadow-[0_30px_70px_rgba(0,0,0,0.8)] z-50"
+          >
+            {navLinks.map((link, idx) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  delay: idx * 0.03,
+                  type: "spring",
+                  stiffness: 180,
+                  damping: 15,
+                }}
+                onClick={() => setIsOpen(false)}
+                className="flex flex-col items-center justify-center text-center p-4 min-h-[110px] rounded-[22px] bg-gradient-to-b from-white/[0.04] to-transparent border border-white/[0.03] hover:border-white/[0.08] active:scale-[0.97] transition-all group relative overflow-hidden"
+              >
+                {/* Dynamic corner glow effect */}
+                <div
+                  className="absolute -right-6 -bottom-6 w-16 h-16 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ backgroundColor: link.colors[0] }}
+                />
+
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-white/80 group-hover:text-white transition-transform group-hover:scale-110 duration-300"
+                  style={{
+                    background: `linear-gradient(135deg, ${link.colors[0]}20, ${link.colors[1]}20)`,
+                  }}
+                >
+                  {link.icon}
+                </div>
+
+                <div className="mt-3 relative">
+                  <span className="text-[14px] font-medium text-slate-300 tracking-wide group-hover:text-white transition-colors">
+                    {link.name}
+                  </span>
+                </div>
+              </motion.a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
