@@ -12,7 +12,6 @@ const projectsData = [
     impact: "↑ 40% pipeline reliability | ↓ manual effort",
     tags: ["Google ADK", "BigQuery", "FastAPI", "React", "GCP"],
     color: "from-cyan-500/20 to-blue-500/20",
-    image: "/Learning_AI_Agent_Architectures.png",
   },
   {
     id: 2,
@@ -23,7 +22,6 @@ const projectsData = [
     impact: "↑ 30% efficiency | scalable multi-agent architecture",
     tags: ["MCP", "Vertex AI", "Python", "Cloud Run", "GCP"],
     color: "from-purple-500/20 to-indigo-500/20",
-    image: "/Learning_AI_Agent_Architectures.png",
   },
   {
     id: 3,
@@ -34,7 +32,6 @@ const projectsData = [
     impact: "↑ 35% accuracy | ↑ 30% uptime",
     tags: ["LLMs", "Prompt Engineering", "Python", "React", "System Design"],
     color: "from-blue-500/20 to-cyan-500/20",
-    image: "/Learning_AI_Agent_Architectures.png",
   },
   {
     id: 4,
@@ -45,7 +42,6 @@ const projectsData = [
     impact: "Automated migration | ensured data integrity",
     tags: ["AWS S3", "Lambda", "Airflow", "PostgreSQL"],
     color: "from-orange-500/20 to-yellow-500/20",
-    image: "/Learning_AI_Agent_Architectures.png",
   },
 ];
 
