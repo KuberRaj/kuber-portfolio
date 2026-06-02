@@ -86,9 +86,12 @@ const ResumeModal = ({
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-blue-400 hover:text-cyan-300 bg-blue-500/5 hover:bg-blue-500/15 border border-transparent hover:border-blue-500/20 transition-all duration-300"
+              className="group relative p-1.5 rounded-lg text-blue-400 cursor-pointer bg-blue-500/5 border border-cyan-500/20 transition-all duration-300 ease-out hover:scale-110 active:scale-95 hover:text-cyan-300 hover:bg-blue-500/15 hover:border-blue-500/20 hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]"
             >
-              <X size={18} />
+              <X
+                size={18}
+                className="transition-transform duration-300 ease-out group-hover:rotate-90"
+              />
             </button>
           </div>
         </div>
