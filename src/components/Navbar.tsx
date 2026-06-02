@@ -130,10 +130,20 @@ export default function Navbar({ onShowResume }: { onShowResume: () => void }) {
         {/* Contact CTA */}
         <Button
           onClick={onShowResume}
-          className="rounded-full cursor-pointer bg-white text-black hover:bg-cyan-50 h-10 px-6 font-bold"
+          className="group relative h-10 px-6 font-bold text-white rounded-full bg-slate-950/40 hover:text-black border-2 border-cyan-500/50 hover:border-cyan-400 transition-all duration-300 overflow-hidden shadow-[0_0_25px_rgba(6,182,212,0.3),inset_0_0_15px_rgba(6,182,212,0.2)] hover:shadow-[0_0_45px_rgba(6,182,212,0.65),inset_0_0_20px_rgba(6,182,212,0.4)] active:scale-95 cursor-pointer flex items-center gap-2 backdrop-blur-md"
         >
-          Résumé
-          <ArrowDownToLine />
+          {/* Liquid slide-up background color fill */}
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] -z-10" />
+
+          {/* Button Text */}
+          <span className="relative z-10 transition-colors duration-300 text-cyan-100 group-hover:text-slate-950">
+            Résumé
+          </span>
+
+          {/* Always-bouncing Arrow Icon */}
+          <div className="relative z-10 text-cyan-400 group-hover:text-slate-950 transition-colors duration-300 animate-[bounce_2s_infinite] group-hover:animate-[bounce_1s_infinite]">
+            <ArrowDownToLine size={16} strokeWidth={3} />
+          </div>
         </Button>
       </div>
     </motion.nav>
