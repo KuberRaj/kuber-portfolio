@@ -327,7 +327,7 @@ export default function Projects() {
               {/* Close Button */}
               <button
                 onClick={() => setShowModal(false)}
-                className="absolute top-6 right-6 p-2 rounded-full border border-slate-700/50 bg-slate-900/40 text-slate-400 
+                className="absolute top-6 right-6 p-2 rounded-full cursor-pointer border border-slate-700/50 bg-slate-900/40 text-slate-400 
                      hover:text-cyan-400 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105"
               >
                 <span className="sr-only">Close</span>
