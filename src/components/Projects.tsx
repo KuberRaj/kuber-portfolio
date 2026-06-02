@@ -327,9 +327,25 @@ export default function Projects() {
               {/* Close Button */}
               <button
                 onClick={() => setShowModal(false)}
-                className="absolute top-6 right-6 p-2 rounded-full cursor-pointer border border-slate-700/50 bg-slate-900/40 text-slate-400 
-                     hover:text-cyan-400 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105"
-              >
+                className="
+                  fixed bottom-3 right-5 z-[200] 
+                  md:absolute md:top-6 md:right-6 md:bottom-auto
+
+                  p-4 md:p-2
+                  cursor-pointer rounded-full
+
+                  border-2 border-cyan-400/20 
+                  bg-slate-900/60 backdrop-blur-2xl
+
+                  text-slate-300 md:text-slate-400
+                  hover:text-cyan-300 hover:border-cyan-400/40
+
+                  shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)] animate-[pulse_2.5s_infinite]
+                  hover:shadow-[0_0_20px_rgba(34,211,238,0.45),0_0_40px_rgba(34,211,238,0.25)]
+
+                  transition-all duration-300 hover:scale-110 active:scale-95
+                "
+                >
                 <span className="sr-only">Close</span>
                 <svg
                   className="w-4 h-4"
