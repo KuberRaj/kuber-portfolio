@@ -80,7 +80,7 @@ export default function Projects() {
 
       <div className="flex flex-col lg:flex-row gap-8">
         {/* --- THE STAGE (2/3) --- */}
-        <div className="lg:w-2/3 h-[600px] relative group overflow-hidden rounded-[3rem] border border-white/10 bg-slate-900 shadow-2xl">
+        <div className="lg:w-2/3 h-[575px] relative group overflow-hidden rounded-[3rem] border border-white/10 bg-slate-900 shadow-2xl m-2">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProject.id}
@@ -90,18 +90,30 @@ export default function Projects() {
               transition={{ duration: 0.5 }}
               className="absolute inset-0"
             >
-              {/* Cover Image/Animation */}
-              <img
-                src={activeProject.image}
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-0 group-hover:scale-105 transition-opacity duration-700"
-                alt={activeProject.title}
-              />
-
               {/* Hover Content (Details) */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center p-12 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none group-hover:pointer-events-auto">
-                <h3 className="text-5xl font-bold text-white mb-6 leading-tight">
+              <div className="absolute inset-0 flex flex-col justify-center items-center p-12 text-center transition-opacity duration-500">
+                <h3 className="text-5xl font-bold text-white mb-4 leading-tight">
                   {activeProject.title}
                 </h3>
+                <div className="flex gap-2">
+                  {activeProject.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="
+                        px-4 py-1 mb-4
+                        rounded-full
+                        text-[14px] text-green-300
+                        bg-gradient-to-br from-white/20 to-white/5
+                        backdrop-blur-xl
+                        border border-white/20
+                        shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_4px_12px_rgba(0,0,0,0.2)]
+                      "
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
                 <p className="text-xl text-white/70 max-w-lg mb-8 leading-relaxed">
                   {activeProject.fullDesc}
                 </p>
@@ -112,7 +124,7 @@ export default function Projects() {
                   className="text-[11px] font-medium tracking-wider text-cyan-300
                 bg-slate-950/90 backdrop-blur-lg px-4 rounded-full 
                 border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)]
-                animate-pulse group-hover:opacity-0 transition-all duration-500
+                animate-pulse transition-all duration-500
                 flex items-center gap-1.5 mb-4"
                 >
                   Details limited due to confidentiality
@@ -133,44 +145,19 @@ export default function Projects() {
                   </button> */}
                 </div>
               </div>
-
-              {/* Default Content (Bottom Bar) */}
-              <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-slate-950 to-transparent group-hover:opacity-0 transition-opacity duration-500">
-                <h3 className="text-3xl font-bold text-white mb-3">
-                  {activeProject.title}
-                </h3>
-                <div className="flex gap-2">
-                  {activeProject.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs text-white/80 border border-white/10"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div
-                  className="absolute bottom-2 left-10 text-[11px] font-medium tracking-wider text-green-600
-                animate-pulse group-hover:opacity-0 transition-all duration-500
-                flex items-center gap-1.5"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-600 shadow-[0_0_8px_#22d3ee]"></span>
-                  VISUAL REPRESENTATION FOR ILLUSTRATION PURPOSES
-                </div>
-              </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* --- UPDATED GALLERY SIDEBAR --- */}
-        <div className="lg:w-1/3 flex flex-col gap-4 overflow-y-auto max-h-[650px] pr-4 custom-scrollbar">
+        <div className="lg:w-1/3 flex flex-col gap-4 overflow-y-auto h-[600px] pr-4 custom-scrollbar">
           {projectsData.map((project) => (
             <motion.div
               key={project.id}
               onClick={() => setActiveProject(project)}
               // Simple lift effect on hover
               whileHover={{ y: -5 }}
-              className={`relative cursor-pointer p-8 rounded-[2rem] border transition-all duration-500 group overflow-hidden min-h-[160px] flex flex-col justify-center
+              className={`relative cursor-pointer pl-8 pr-8 rounded-[2rem] border transition-all duration-500 group overflow-hidden min-h-[160px] flex flex-col justify-center
         ${
           activeProject.id === project.id
             ? "bg-cyan-500/10 border-cyan-500/40 shadow-[0_0_30px_rgba(6,182,212,0.15)]"
@@ -195,7 +182,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] uppercase font-black text-white/30 tracking-[0.15em] border-b border-white/5 pb-1"
+                      className="text-[10px] uppercase font-black text-sky-400 tracking-[0.15em] border-b border-white/10 pb-1"
                     >
                       {tag}
                     </span>
@@ -214,7 +201,7 @@ export default function Projects() {
               {activeProject.id === project.id && (
                 <motion.div
                   layoutId="activeDot"
-                  className="absolute right-6 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]"
+                  className="absolute right-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]"
                 />
               )}
             </motion.div>
@@ -345,10 +332,10 @@ export default function Projects() {
 
                   transition-all duration-300 hover:scale-110 active:scale-95
                 "
-                >
+              >
                 <span className="sr-only">Close</span>
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
