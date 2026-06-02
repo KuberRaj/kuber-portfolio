@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
-import {
-  ArrowRightIcon,
-} from "@phosphor-icons/react";
-import {  FaLinkedin, FaPhone, FaWhatsapp } from "react-icons/fa";
+import { ArrowRightIcon } from "@phosphor-icons/react";
+import { FaLinkedin, FaPhone, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { VscGithub } from "react-icons/vsc";
 
@@ -58,13 +56,30 @@ export default function Footer() {
 
           <div className="relative inline-block group">
             {/* Button Glow Effect */}
-            <div className="absolute inset-0 bg-blue-500/30 blur-3xl rounded-full group-hover:bg-blue-400/50 transition-colors duration-500" />
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="relative px-12 cursor-pointer py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-all active:scale-95 flex items-center gap-3"
-            >
-              Start a Conversation <ArrowRightIcon weight="bold" />
-            </button>
+            <div className="flex flex-col gap-6 max-w-sm mx-auto relative z-10">
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="group relative p-4 rounded-full backdrop-blur-xl border-2 border-indigo-500/30 bg-gradient-to-br from-indigo-900/40 via-black-900/60 to-black/80 shadow-2xl hover:shadow-indigo-500/30 hover:shadow-2xl hover:scale-[1.02] hover:-translate-y-1 active:scale-95 transition-all duration-500 ease-out cursor-pointer hover:border-indigo-400/60 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 via-indigo-400/20 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className="flex-1 text-left">
+                    <p className="text-white/60 font-bold text-lg group-hover:text-white transition-colors duration-300 drop-shadow-sm">
+                      Start a Conversation
+                    </p>
+                  </div>
+                  <div className="opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                    <ArrowRightIcon
+                      weight="bold"
+                      className="w-5 h-5 text-cyan-400 group-hover:text-indigo-300 drop-shadow-[0_0_5px_rgba(6,182,212,0.3)]"
+                    />
+                  </div>
+                </div>
+              </button>
+            </div>
           </div>
         </motion.div>
 
@@ -72,11 +87,31 @@ export default function Footer() {
         <div className="w-full mt-20 pt-10 border-t border-white/5 flex flex-col items-center justify-center">
           {/* Social Icons Row */}
           <div className="flex items-center justify-center flex-row gap-6 z-10">
-            <SocialIcon icon={<FaLinkedin size={24} strokeWidth={2}/>} href="https://linkedin.com/in/kuber-raj-kunal" className="hover:text-[#0077b5]"/>
-            <SocialIcon icon={<VscGithub size={24} />} href="https://github.com/KuberRaj" className="hover:text-[#24292e]"/>
-            <SocialIcon icon={<FaPhone size={24} strokeWidth={2}/>} href="tel: +916371649030" className="hover:text-[#0284c7]"/>
-            <SocialIcon icon={<FaWhatsapp size={24} strokeWidth={2}/>} href="https://wa.me/916371649030?text=Hi%20Kunal%2C%20I%20came%20across%20your%20portfolio" className="hover:text-[#22c55e]"/>
-            <SocialIcon icon={<SiGmail size={24} />} href="mailto:krk2000raj@gmail.com" className="hover:text-[#ef4444]"/>
+            <SocialIcon
+              icon={<FaLinkedin size={24} strokeWidth={2} />}
+              href="https://linkedin.com/in/kuber-raj-kunal"
+              className="hover:text-[#0077b5]"
+            />
+            <SocialIcon
+              icon={<VscGithub size={24} />}
+              href="https://github.com/KuberRaj"
+              className="hover:text-[#24292e]"
+            />
+            <SocialIcon
+              icon={<FaPhone size={24} strokeWidth={2} />}
+              href="tel: +916371649030"
+              className="hover:text-[#0284c7]"
+            />
+            <SocialIcon
+              icon={<FaWhatsapp size={24} strokeWidth={2} />}
+              href="https://wa.me/916371649030?text=Hi%20Kunal%2C%20I%20came%20across%20your%20portfolio"
+              className="hover:text-[#22c55e]"
+            />
+            <SocialIcon
+              icon={<SiGmail size={24} />}
+              href="mailto:krk2000raj@gmail.com"
+              className="hover:text-[#ef4444]"
+            />
           </div>
 
           {/* Copyright Row */}
@@ -89,7 +124,15 @@ export default function Footer() {
   );
 }
 
-function SocialIcon({ icon, href, className }: { icon: React.ReactNode; href: string; className: string }) {
+function SocialIcon({
+  icon,
+  href,
+  className,
+}: {
+  icon: React.ReactNode;
+  href: string;
+  className: string;
+}) {
   return (
     <a
       href={href}
