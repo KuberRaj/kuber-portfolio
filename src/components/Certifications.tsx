@@ -30,6 +30,7 @@ const certifications = [
 export default function CertificationCarousel() {
   const [index, setIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
   // 1. Auto-play logic (stops on hover)
   useEffect(() => {
@@ -62,6 +63,7 @@ export default function CertificationCarousel() {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5, ease: "circOut" }}
             whileHover={{ scale: 1.05, zIndex: 10 }} // Pop up/enlarge on hover
+            onClick={() => setSelectedImage(certifications[index].image)}
             className="w-[90%] md:w-full h-full rounded-[3rem] bg-white/[0.03] backdrop-blur-3xl border border-white/10 overflow-hidden shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] cursor-pointer group"
           >
             {/* Certificate Image */}
@@ -112,7 +114,7 @@ export default function CertificationCarousel() {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`h-2 rounded-full transition-all duration-500 ${
+            className={`h-2 rounded-full transition-all cursor-pointer duration-500 ${
               index === i
                 ? "w-8 bg-blue-500 shadow-[0_0_10px_#3b82f6]"
                 : "w-2 bg-white/20 hover:bg-white/40"
@@ -120,6 +122,44 @@ export default function CertificationCarousel() {
           />
         ))}
       </div>
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xl"
+          onClick={() => setSelectedImage("")}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Image */}
+            <img
+              src={selectedImage}
+              className="max-w-[90vw] max-h-[90vh] rounded-2xl shadow-2xl"
+            />
+
+            {/* Close Button */}
+            <button
+              className="
+                absolute top-1 right-1
+                bg-neutral-800 backdrop-blur-md
+                text-white text-lg
+                rounded-full w-8 h-8
+                flex items-center justify-center
+                border border-white/30 cursor-pointer
+                hover:bg-neutral-500 transition
+                hover:scale-[1.2]
+              "
+              onClick={() => setSelectedImage("")}
+            >
+              ✕
+            </button>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 }
