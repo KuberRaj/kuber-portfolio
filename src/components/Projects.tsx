@@ -10,7 +10,7 @@ const projectsData = [
     fullDesc:
       "Designed and developed a multi-agent AI platform using Google ADK and BigQuery to automate data quality checks across large-scale pipelines. Implemented intelligent validation agents that significantly reduced manual intervention and improved overall data reliability.",
     impact: "↑ 40% pipeline reliability | ↓ manual effort",
-    tags: ["Google ADK", "BigQuery", "FastAPI", "React", "GCP"],
+    tags: ["Google ADK", "BigQuery", "Python", "GCP"],
     color: "from-cyan-500/20 to-blue-500/20",
   },
   {
@@ -20,7 +20,14 @@ const projectsData = [
     fullDesc:
       "Built a scalable orchestration platform leveraging MCP and Vertex AI to coordinate multiple AI agents for workflow automation. Designed modular agent pipelines to improve system adaptability and enable efficient execution of complex, multi-step processes.",
     impact: "↑ 30% efficiency | scalable multi-agent architecture",
-    tags: ["MCP", "Vertex AI", "Python", "Cloud Run", "GCP"],
+    tags: [
+      "Google ADK",
+      "MCP",
+      "FastAPI",
+      "Cloud Run",
+      "Token Optimization",
+      "GCP",
+    ],
     color: "from-purple-500/20 to-indigo-500/20",
   },
   {
@@ -30,7 +37,7 @@ const projectsData = [
     fullDesc:
       "Engineered a high-availability GenAI platform focused on mainframe-to-cloud conversion workflows. Optimized LLM pipelines and system architecture to enhance conversion accuracy while maintaining high reliability in enterprise environments.",
     impact: "↑ 35% accuracy | ↑ 30% uptime",
-    tags: ["LLMs", "Prompt Engineering", "Python", "React", "System Design"],
+    tags: ["LLMs", "Prompt Engineering", "Python", "React", "Flask"],
     color: "from-blue-500/20 to-cyan-500/20",
   },
   {
@@ -40,7 +47,7 @@ const projectsData = [
     fullDesc:
       "Developed an end-to-end data migration proof-of-concept using AWS S3, Lambda, and Airflow. Designed automated ingestion and orchestration workflows ensuring data integrity and minimizing manual migration effort.",
     impact: "Automated migration | ensured data integrity",
-    tags: ["AWS S3", "Lambda", "Airflow", "PostgreSQL"],
+    tags: ["AWS S3", "Lambda", "Airflow", "RDs", "PostgreSQL"],
     color: "from-orange-500/20 to-yellow-500/20",
   },
 ];
@@ -76,7 +83,7 @@ export default function Projects() {
 
       <div className="flex flex-col lg:flex-row gap-8">
         {/* --- THE STAGE (2/3) --- */}
-        <div className="lg:w-2/3 h-[575px] relative group overflow-hidden rounded-[3rem] border border-white/10 bg-slate-900 shadow-2xl m-2">
+        <div className="lg:w-2/3 h-[600px] md:h-[575px] relative group overflow-hidden rounded-[3rem] border border-white/10 bg-slate-900 shadow-2xl m-2">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProject.id}
@@ -87,18 +94,18 @@ export default function Projects() {
               className="absolute inset-0"
             >
               {/* Hover Content (Details) */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center p-12 text-center transition-opacity duration-500">
-                <h3 className="text-5xl font-bold text-white mb-4 leading-tight">
+              <div className="absolute inset-0 flex flex-col justify-center items-center p-6 md:p-12 text-center transition-opacity duration-500">
+                <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 leading-tight">
                   {activeProject.title}
                 </h3>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap justify-center">
                   {activeProject.tags.map((tag) => (
                     <span
                       key={tag}
                       className="
                         px-4 py-1 mb-4
                         rounded-full
-                        text-[14px] text-green-300
+                        text-[12px] md:text-[14px] px-3 md:px-4 py-1 text-green-300
                         bg-gradient-to-br from-white/20 to-white/5
                         backdrop-blur-xl
                         border border-white/20
@@ -110,10 +117,10 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <p className="text-xl text-white/70 max-w-lg mb-8 leading-relaxed">
+                <p className="text-base md:text-xl text-white/70 max-w-lg mb-8 leading-relaxed">
                   {activeProject.fullDesc}
                 </p>
-                <p className="text-sm text-cyan-300 font-medium mb-6">
+                <p className="text-xs md:text-sm text-cyan-300 font-medium mb-6">
                   {activeProject.impact}
                 </p>
                 <p
