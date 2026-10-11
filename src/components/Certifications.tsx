@@ -4,6 +4,7 @@ import {
   ArrowSquareOutIcon,
   CertificateIcon,
   SealCheckIcon,
+  IdentificationBadgeIcon 
 } from "@phosphor-icons/react";
 
 // Use your certifications constant here
@@ -25,6 +26,15 @@ const certifications = [
     link: "https://www.credly.com/badges/b3977983-bb2d-47f3-8065-62d26dc7aa6e/public_url",
     icon: <SealCheckIcon size={32} weight="fill" className="text-green-400" />,
   },
+  {
+    title: "Partner Specialist Gemini Enterprise Agent Development",
+    issuer: "Google Cloud",
+    date: "August 2026",
+    image: "/GEAD.jpeg",
+    link: "https://www.credly.com/badges/3c36e6cf-a99d-438d-883d-76c85bfc491b/public_url",
+    icon: <IdentificationBadgeIcon  size={32} weight="fill" className="text-purple-400" />,
+  },
+
 ];
 
 export default function CertificationCarousel() {
@@ -44,8 +54,8 @@ export default function CertificationCarousel() {
   return (
     <section className="py-24 bg-[#020617] overflow-hidden flex flex-col items-center">
       <div className="max-w-4xl w-full px-6 mb-12">
-        <h2 className="text-4xl font-bold text-white italic tracking-tighter uppercase">
-          Verified <span className="text-blue-500">Achievements</span>
+        <h2 className="text-4xl font-bold text-effect italic tracking-tighter uppercase">
+          Verified <span className="">Achievements</span>
         </h2>
       </div>
 

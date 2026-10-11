@@ -41,7 +41,7 @@ export default function Hero() {
           <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-white leading-tight">
             Engineer. Scale.
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#4285F4] via-[#EA4335] via-[#FBBC05] to-[#34A853] bg-clip-text text-transparent leading-tight">
               Elevate.
             </span>
           </h1>

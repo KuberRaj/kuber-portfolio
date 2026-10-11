@@ -53,13 +53,13 @@ export default function About() {
   };
 
   return (
-    <section className="min-h-screen bg-slate-950 flex flex-col items-center justify-center py-20 px-4 overflow-hidden relative select-none">
+    <section className="min-h-screen bg-slate-950 flex flex-col items-center justify-center py-15 px-4 overflow-hidden relative select-none">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20 opacity-40 pointer-events-none" />
-      <div className="max-w-5xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter uppercase">
-          The <span className="text-blue-500">Journey</span>
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-4xl md:text-5xl font-black text-effect italic tracking-tighter uppercase">
+          The <span className="">Journey</span>
         </h2>
-        <p className="text-slate-400 mt-2 text-sm md:text-base font-medium italic">
+        <p className="text-slate-200 mt-2 text-sm md:text-base font-medium italic">
           Engineering intelligence, layer by layer
         </p>
       </div>

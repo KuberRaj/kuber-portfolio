@@ -35,6 +35,11 @@ const navLinks = [
   },
 ];
 
+// import React from 'react';
+
+
+
+
 export default function Navbar({ onShowResume }: { onShowResume: () => void }) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);

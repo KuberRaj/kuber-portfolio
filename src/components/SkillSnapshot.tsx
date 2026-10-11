@@ -103,9 +103,9 @@ export const SkillSnapshot = () => {
   return (
     <section className="max-w-6xl mx-auto p-6">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black text-white italic tracking-tighter mb-4">
+        <h2 className="text-5xl font-black text-effect italic tracking-tighter mb-4">
           {/* DIGITAL <span className="text-blue-500">ARSENAL</span> */}
-          SKILL <span className="text-blue-500">CONSOLE</span>
+          SKILL <span className="">CONSOLE</span>
           <span className="align-super text-[25px] text-white/60 ml-1 uppercase">
             core
           </span>

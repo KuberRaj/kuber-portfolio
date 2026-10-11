@@ -659,7 +659,6 @@ body {
 
 
 
-
 .social-icon {
   position: relative;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -702,3 +701,120 @@ body {
 }
 
 
+
+/* MAIN drifting path (large V / curved orbit) */
+@keyframes spaceDrift {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+  }
+
+  20% {
+    transform: translate(-14px, -16px) rotate(-5deg) scale(1.03);
+  }
+
+  40% {
+    transform: translate(-6px, 8px) rotate(2deg) scale(0.98);
+  }
+
+  60% {
+    transform: translate(16px, -12px) rotate(6deg) scale(1.04);
+  }
+
+  80% {
+    transform: translate(8px, 10px) rotate(-3deg) scale(0.99);
+  }
+
+  100% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+  }
+}
+
+/* SLOW orbital bias (adds wide curved drifting layer) */
+@keyframes orbitDrift {
+  0%   { transform: translateX(0px) translateY(0px); }
+  25%  { transform: translateX(18px) translateY(-6px); }
+  50%  { transform: translateX(32px) translateY(6px); }
+  75%  { transform: translateX(14px) translateY(12px); }
+  100% { transform: translateX(0px) translateY(0px); }
+}
+
+/* MICRO jitter (tiny thruster-like corrections) */
+@keyframes microJitter {
+  0%, 100% { transform: translate(0, 0); }
+
+  20% { transform: translate(0.6px, -0.8px); }
+  40% { transform: translate(-0.7px, 0.5px); }
+  60% { transform: translate(0.5px, 0.7px); }
+  80% { transform: translate(-0.4px, -0.6px); }
+}
+
+/* DEPTH illusion (subtle focus breathing) */
+@keyframes spaceDepth {
+  0%, 100% { filter: blur(0px); }
+  50% { filter: blur(0.6px); }
+}
+
+/* ✅ STRUCTURE: use nesting for additive transforms */
+.animate-cosmic-wrapper {
+  animation: orbitDrift 30s linear infinite;
+}
+
+.animate-cosmic-inner {
+  animation: spaceDrift 12s linear infinite;
+}
+
+.animate-cosmic-core {
+  animation:
+    microJitter 2.8s linear infinite,
+    spaceDepth 8s ease-in-out infinite;
+}
+
+
+/* Custom utility animations */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Hide scrollbars but keep functionality intact */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.text-effect{
+  -webkit-text-stroke: 2px #d6f4f4;
+  font-variation-settings: "wght" 900, "ital" 1;
+  text-align: center;
+  color: transparent;
+  font-family: "Meta", sans-serif;
+  text-shadow: 25px 25px 5px #482896;
+}

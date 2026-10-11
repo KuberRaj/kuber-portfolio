@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Certifications from "./components/Certifications";
 import StarFall from "./components/StarFall";
+import ChatPreviewModal from "./components/ChatBot";
 import { SkillSnapshot } from "./components/SkillSnapshot";
 import { FiDownload } from "react-icons/fi";
 import { LuScanSearch } from "react-icons/lu";
@@ -406,6 +407,61 @@ const AboutMeLayered = () => {
   );
 };
 
+
+
+
+// export default ChatPreviewModal;
+
+
+
+interface AstronautBrandProps {
+  imagePath?: string;
+  altText?: string;
+}
+
+const AstronautBrand: React.FC<AstronautBrandProps> = ({
+  imagePath = "/astronaut.png", // Make sure this matches your image path in the public folder
+  altText = "Astronaut Logo",
+}) => {
+   const [open, setOpen] = useState(false);
+  return (
+    <>
+      /* fixed positioning isolates the component from layout flow and keeps it
+      in place on scroll */
+      {!open && <div className="fixed top-20 right-10 z-50 pointer-events-auto animate-cosmic-wrapper">
+        <div className="animate-cosmic-inner">
+          <div className="relative w-20 md:w-35 h-20 md:h-35 animate-cosmic-core cursor-pointer group">
+            {/* Astronaut */}
+            <img
+              src={imagePath}
+              alt={altText}
+              onClick={() => setOpen(true)}
+              className="w-full h-full object-contain relative select-none pointer-events-auto"
+            />
+
+            <div
+              className="
+                absolute bottom-0 right-7
+                px-2 py-1 
+                rounded-xl 
+                bg-slate-900/70 backdrop-blur-md 
+                border border-white/20
+                text-[6px] md:text-sm text-white
+                shadow-lg
+                group-hover:scale-105
+                transition-transform duration-300
+              "
+            >
+              <div className="font-semibold tracking-wide">AI Co-Pilot</div>
+            </div>
+          </div>
+        </div>
+      </div>}
+      {open && <ChatPreviewModal onClose={() => setOpen(false)} />}
+    </>
+  );
+};
+
 function App() {
   const [showResume, setShowResume] = useState(false);
 
@@ -449,6 +505,8 @@ function App() {
                       setShowResume(true);
                     }}
                   />
+                  <AstronautBrand imagePath="/astronaut.png" />
+
                   <Hero />
                   <SkillSnapshot />
                   <Projects />

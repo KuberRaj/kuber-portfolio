@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GlobeIcon } from "@phosphor-icons/react";
+import { GithubLogoIcon, GlobeIcon } from "@phosphor-icons/react";
 
 const projectsData = [
   {
@@ -12,6 +12,7 @@ const projectsData = [
     impact: "↑ 40% pipeline reliability | ↓ manual effort",
     tags: ["Google ADK", "BigQuery", "Python", "GCP"],
     color: "from-cyan-500/20 to-blue-500/20",
+    conf: true,
   },
   {
     id: 2,
@@ -25,9 +26,11 @@ const projectsData = [
       "MCP",
       "FastAPI",
       "Cloud Run",
-      "React",
+      "Token Optimization",
+      "GCP",
     ],
     color: "from-purple-500/20 to-indigo-500/20",
+    conf: true,
   },
   {
     id: 3,
@@ -38,9 +41,32 @@ const projectsData = [
     impact: "↑ 35% accuracy | ↑ 30% uptime",
     tags: ["LLMs", "Prompt Engineering", "Python", "React", "Flask"],
     color: "from-blue-500/20 to-cyan-500/20",
+    conf: true,
   },
   {
     id: 4,
+    title: "Agentic RAG Portfolio Assistant",
+    shortDesc:
+      "AI-powered portfolio assistant with semantic retrieval and streamed conversational responses.",
+    fullDesc:"Built an agentic RAG portfolio assistant using Google ADK, Gemini embeddings, Python, and React. It semantically retrieves professional information and streams grounded responses through an interactive chatbot.",
+    fullDesc2:
+      "Developed a production-deployed AI co-pilot that allows recruiters and portfolio visitors to explore my professional background through natural-language questions. The application uses a Google ADK agent with a custom RAG tool to retrieve relevant content from embedded profile, experience, and project documents. The React and Tailwind CSS interface supports streamed SSE responses, Markdown rendering, randomized prompt suggestions, responsive window modes, and grounded fallback behavior when information is unavailable. The embedding index is automatically regenerated through GitHub Actions whenever the knowledge base changes.",
+    impact:
+      "Automated knowledge updates | Grounded semantic retrieval | Near real-time responses",
+    tags: [
+      "Google ADK",
+      "Agentic AI",
+      "RAG",
+      "Gemini",
+      "Python",
+      "React",
+      "GitHub Actions"
+    ],
+    color: "from-indigo-500/20 to-cyan-500/20",
+    conf: false,
+  },
+  {
+    id: 5,
     title: "Cloud Data Migration PoC",
     shortDesc: "Automated on-prem to cloud migration pipeline.",
     fullDesc:
@@ -48,6 +74,7 @@ const projectsData = [
     impact: "Automated migration | ensured data integrity",
     tags: ["AWS S3", "Lambda", "Airflow", "RDs", "PostgreSQL"],
     color: "from-orange-500/20 to-yellow-500/20",
+    conf: true,
   },
 ];
 
@@ -122,7 +149,7 @@ export default function Projects() {
                 <p className="text-xs md:text-sm text-cyan-300 font-medium mb-6">
                   {activeProject.impact}
                 </p>
-                <p
+                {activeProject.conf && <p
                   className="text-[11px] font-medium tracking-wider text-cyan-300
                 bg-slate-950/90 backdrop-blur-lg px-4 rounded-full 
                 border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)]
@@ -130,7 +157,7 @@ export default function Projects() {
                 flex items-center gap-1.5 mb-4"
                 >
                   Details limited due to confidentiality
-                </p>
+                </p>}
                 <div className="flex gap-4">
                   <button
                     onClick={() => {
@@ -142,9 +169,9 @@ export default function Projects() {
                   >
                     <GlobeIcon size={24} weight="bold" />
                   </button>
-                  {/* <button className="p-4 rounded-full bg-white/10 text-white backdrop-blur-xl border border-white/10 hover:scale-110 transition-transform">
-                    <GithubLogo size={24} weight="bold" />
-                  </button> */}
+                  {!activeProject.conf && <button className="p-4 rounded-full bg-blue-900/80 text-white backdrop-blur-xl border border-white/10 hover:scale-110 transition-transform">
+                    <GithubLogoIcon size={24} weight="bold" />
+                  </button>}
                 </div>
               </div>
             </motion.div>
@@ -371,7 +398,7 @@ export default function Projects() {
                   </div>
 
                   <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
-                    {selectedProject.fullDesc}
+                    {selectedProject.conf ? selectedProject.fullDesc : selectedProject.fullDesc2}
                   </p>
 
                   {/* Tech Stack */}
@@ -413,7 +440,7 @@ export default function Projects() {
               )}
 
               {/* Footnotes / Confidential Note */}
-              <div className="mt-12 pt-6 border-t border-slate-800/60 flex items-center gap-2 text-xs text-slate-500">
+              {selectedProject.conf && <div className="mt-12 pt-6 border-t border-slate-800/60 flex items-center gap-2 text-xs text-slate-500">
                 <svg
                   className="w-3.5 h-3.5 text-amber-500/60"
                   fill="none"
@@ -428,7 +455,7 @@ export default function Projects() {
                   />
                 </svg>
                 <span>Details limited due to confidentiality.</span>
-              </div>
+              </div>}
             </div>
           </motion.div>
         </motion.div>
