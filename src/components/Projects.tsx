@@ -46,9 +46,11 @@ const projectsData = [
   {
     id: 4,
     title: "Agentic RAG Portfolio Assistant",
+    link:"https://github.com/KuberRaj/portfolio-assistant",
     shortDesc:
       "AI-powered portfolio assistant with semantic retrieval and streamed conversational responses.",
-    fullDesc:"Built an agentic RAG portfolio assistant using Google ADK, Gemini embeddings, Python, and React. It semantically retrieves professional information and streams grounded responses through an interactive chatbot.",
+    fullDesc:
+      "Built an agentic RAG portfolio assistant using Google ADK, Gemini embeddings, Python, and React. It semantically retrieves professional information and streams grounded responses through an interactive chatbot.",
     fullDesc2:
       "Developed a production-deployed AI co-pilot that allows recruiters and portfolio visitors to explore my professional background through natural-language questions. The application uses a Google ADK agent with a custom RAG tool to retrieve relevant content from embedded profile, experience, and project documents. The React and Tailwind CSS interface supports streamed SSE responses, Markdown rendering, randomized prompt suggestions, responsive window modes, and grounded fallback behavior when information is unavailable. The embedding index is automatically regenerated through GitHub Actions whenever the knowledge base changes.",
     impact:
@@ -60,7 +62,7 @@ const projectsData = [
       "Gemini",
       "Python",
       "React",
-      "GitHub Actions"
+      "GitHub Actions",
     ],
     color: "from-indigo-500/20 to-cyan-500/20",
     conf: false,
@@ -149,15 +151,17 @@ export default function Projects() {
                 <p className="text-xs md:text-sm text-cyan-300 font-medium mb-6">
                   {activeProject.impact}
                 </p>
-                {activeProject.conf && <p
-                  className="text-[11px] font-medium tracking-wider text-cyan-300
+                {activeProject.conf && (
+                  <p
+                    className="text-[11px] font-medium tracking-wider text-cyan-300
                 bg-slate-950/90 backdrop-blur-lg px-4 rounded-full 
                 border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)]
                 animate-pulse transition-all duration-500
                 flex items-center gap-1.5 mb-4"
-                >
-                  Details limited due to confidentiality
-                </p>}
+                  >
+                    Details limited due to confidentiality
+                  </p>
+                )}
                 <div className="flex gap-4">
                   <button
                     onClick={() => {
@@ -169,9 +173,16 @@ export default function Projects() {
                   >
                     <GlobeIcon size={24} weight="bold" />
                   </button>
-                  {!activeProject.conf && <button className="p-4 rounded-full bg-blue-900/80 text-white backdrop-blur-xl border border-white/10 hover:scale-110 transition-transform">
-                    <GithubLogoIcon size={24} weight="bold" />
-                  </button>}
+                  {!activeProject.conf && activeProject.link && (
+                    <a
+                      href={activeProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 rounded-full bg-blue-900/80 text-white backdrop-blur-xl border border-white/10 hover:scale-110 transition-transform inline-flex items-center justify-center"
+                    >
+                      <GithubLogoIcon size={24} weight="bold" />
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -398,7 +409,9 @@ export default function Projects() {
                   </div>
 
                   <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
-                    {selectedProject.conf ? selectedProject.fullDesc : selectedProject.fullDesc2}
+                    {selectedProject.conf
+                      ? selectedProject.fullDesc
+                      : selectedProject.fullDesc2}
                   </p>
 
                   {/* Tech Stack */}
@@ -440,22 +453,24 @@ export default function Projects() {
               )}
 
               {/* Footnotes / Confidential Note */}
-              {selectedProject.conf && <div className="mt-12 pt-6 border-t border-slate-800/60 flex items-center gap-2 text-xs text-slate-500">
-                <svg
-                  className="w-3.5 h-3.5 text-amber-500/60"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m0-6v2m0-5h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>Details limited due to confidentiality.</span>
-              </div>}
+              {selectedProject.conf && (
+                <div className="mt-12 pt-6 border-t border-slate-800/60 flex items-center gap-2 text-xs text-slate-500">
+                  <svg
+                    className="w-3.5 h-3.5 text-amber-500/60"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m0-6v2m0-5h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>Details limited due to confidentiality.</span>
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>
