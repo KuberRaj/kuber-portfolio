@@ -573,7 +573,7 @@ const ChatPreviewModal = ({ onClose }: ChatPreviewModalProps) => {
 
       updateAssistantMessage(
         assistantMessageId,
-        "I couldn’t complete that request. Please make sure the local ADK API server is running and try again.",
+        "I couldn’t complete that request. Please make sure the ADK API server is running and try again.",
       );
 
       setConnectionError(errorMessage);
