@@ -741,7 +741,7 @@ const ChatPreviewModal = ({ onClose }: ChatPreviewModalProps) => {
 
             <p className="text-xs leading-relaxed text-slate-400">
               {isInitializing
-                ? "Connecting to the agent..."
+                ? "Connecting to the agent...Waking up the server, please bear with me!"
                 : connectionError
                   ? "The agent is currently unavailable."
                   : "Ask about Kuber's experience, skills, & projects."}
